@@ -23,16 +23,14 @@ void showError(ECE141::StatusResult &aResult) {
     case ECE141::unknownCommand: std::cout << "Unknown command "; break;
     case ECE141::unknownDatabase: std::cout << "Unknown database "; break;
     case ECE141::unknownTable: std::cout << "Unknown table "; break;
-    case ECE141::userTerminated: break; //ignore this...
+    case ECE141::userTerminated: break; 
     default: std::cout << "Unknown error"; break;
   }
   std::cout << std::endl;
 }
 
-//build a tokenizer, tokenize input, ask processors to handle...
 ECE141::StatusResult handleInput(std::istream &aStream, ECE141::IInterpreter &aProcessor) {
-  //ECE141::RGTokenizer theTokenizer(aStream); //USE RGTokenizer if you prefer...
-  ECE141::RGTokenizer theTokenizer(aStream); // USE Your tokenizer if you prefer...
+  ECE141::RGTokenizer theTokenizer(aStream); 
   ECE141::StatusResult theResult=theTokenizer.tokenize();
   while(theResult && theTokenizer.more()) {
     if(";"==theTokenizer.current().data) {
